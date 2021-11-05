@@ -5,22 +5,34 @@
     "version": "0.2.0",
     "configurations": [
       {
-        "name": "foo",
+        "name": "tests",
         "request": "launch",
         "type": "dart",
         "codeLens": {
             "for": [ // Match all templates
                 "run-test",
                 "run-test-file",
-                "run-file",
                 "debug-test",
                 "debug-test-file",
-                "debug-file",
             ],
             "title": "${debugType}", // Sets the title to just "Run" or "Debug" depending on which template (above) it matched
         },
         // The --pause-after-load means it will open a visible Chrome that we can then debug in.
         "toolArgs": ["-pchrome", "--debug", "--pause-after-load"],
+      },
+      {
+        "name": "program",
+        "request": "launch",
+        "type": "dart",
+        "codeLens": {
+            "for": [
+                "run-file",
+                "debug-file",
+            ],
+            "title": "${debugType}", // Sets the title to just "Run" or "Debug" depending on which template (above) it matched
+        },
+        // The --pause-after-load means it will open a visible Chrome that we can then debug in.
+        "toolArgs": ["--debug", "--enable-expression-evaluation"],
       },
     ]
 }
